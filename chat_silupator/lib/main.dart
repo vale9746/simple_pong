@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(8),
         children: [
           for (int i in lista)
-            ListTile(
+            const ListTile(
               trailing: Icon(Icons.drag_handle),
               leading: CircleAvatar(
                 radius: 25,
@@ -62,6 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
             )
         ],
       ),
+      bottomNavigationBar: Builder(builder: (context) {
+        return AppBar();
+      },),
     );
   }
 }
