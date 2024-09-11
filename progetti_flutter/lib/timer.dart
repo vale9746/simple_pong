@@ -8,6 +8,8 @@ class CountDownTimer {
   late Duration _time;
   late Duration _fullTime;
   int work =30;
+  int shortBreak=5;
+  int longBrake=10;
 
   Stream<TimeModel> stream() async* {
     yield* Stream.periodic(Duration(seconds: 1), (int a) {
@@ -41,6 +43,24 @@ class CountDownTimer {
   void startWork(){
     _radius=1;
     _time=Duration(minutes: this.work, seconds: 0);
+    _fullTime=_time;
+  }
+
+  void stopTimer(){
+    this._isActive=false;
+  }
+
+  void startTimer(){
+    if(_time.inSeconds>0){
+      this._isActive=true;
+    }
+  }
+
+  void startBreak(bool isShort){
+    _radius=1;
+    _time=Duration(
+      minutes: (isShort)? shortBreak : longBrake,
+      seconds: 0);
     _fullTime=_time;
   }
 
